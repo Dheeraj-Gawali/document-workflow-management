@@ -1,1 +1,112 @@
-<p>document-form-component works!</p>
+<div class="container">
+
+    <div class="page-header">
+        <div>
+            <h2>{{ editMode ? 'Edit Document' : 'Create Document' }}</h2>
+            <p>{{ editMode ? 'Update draft document details' : 'Add a new workflow document' }}</p>
+        </div>
+
+        <a routerLink="/documents">Back</a>
+    </div>
+
+    <p class="message error" *ngIf="message">{{ message }}</p>
+    <p *ngIf="loading">Please wait...</p>
+
+    <form [formGroup]="documentForm" (ngSubmit)="saveDocument()" *ngIf="!loading || editMode">
+        <div class="form-grid">
+            <div class="form-field">
+                <label>Document Title</label>
+                <input type="text" formControlName="title" />
+
+                <small *ngIf="documentForm.controls.title.touched && documentForm.controls.title.hasError('required')">
+                    Title is required.
+                </small>
+
+                <small *ngIf="documentForm.controls.title.touched && documentForm.controls.title.hasError('minlength')">
+                    Title should be at least 5 characters.
+                </small>
+            </div>
+
+            <div class="form-field">
+                <label>Department</label>
+                <select formControlName="department">
+                    <option value="">Select department</option>
+                    <option *ngFor="let department of departments" [value]="department">
+                        {{ department }}
+                    </option>
+                </select>
+
+                <small
+                    *ngIf="documentForm.controls.department.touched && documentForm.controls.department.hasError('required')">
+                    Department is required.
+                </small>
+            </div>
+
+            <div class="form-field">
+                <label>Effective Date</label>
+                <input type="date" formControlName="effectiveDate" />
+
+                <small
+                    *ngIf="documentForm.controls.effectiveDate.touched && documentForm.controls.effectiveDate.hasError('required')">
+                    Effective date is required.
+                </small>
+
+                <small
+                    *ngIf="documentForm.controls.effectiveDate.touched && documentForm.controls.effectiveDate.hasError('pastDate')">
+                    Effective date cannot be a past date.
+                </small>
+            </div>
+
+            <div class="form-field">
+                <label>Priority</label>
+                <select formControlName="priority">
+                    <option *ngFor="let priority of priorities" [value]="priority">
+                        {{ priority }}
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label>Created By</label>
+                <input type="text" formControlName="createdBy" />
+            </div>
+        </div>
+
+        <div class="form-field full-width">
+            <label>Description</label>
+            <textarea rows="4" formControlName="description"></textarea>
+
+            <small
+                *ngIf="documentForm.controls.description.touched && documentForm.controls.description.hasError('required')">
+                Description is required.
+            </small>
+        </div>
+
+        <div class="form-field full-width">
+            <label>Attachment(s)</label>
+            <input type="file" multiple (change)="onFileChange($event)" />
+
+            <small *ngIf="submitted && attachments.length === 0">
+                At least one attachment is required.
+            </small>
+        </div>
+
+        <div class="attachment-list" *ngIf="attachments.length">
+            <h3>Uploaded Files</h3>
+
+            <div class="attachment-item" *ngFor="let file of attachments">
+                <span>{{ file.fileName }}</span>
+                <span>{{ file.size / 1024 | number: '1.0-0' }} KB</span>
+                <button type="button" (click)="removeAttachment(file.id)">Remove</button>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button type="submit">
+                {{ editMode ? 'Update Document' : 'Create Document' }}
+            </button>
+
+            <a routerLink="/documents">Cancel</a>
+        </div>
+    </form>
+</div>
