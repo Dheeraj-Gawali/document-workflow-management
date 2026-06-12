@@ -1,0 +1,47 @@
+.timeline {
+    position: relative;
+    padding-left: 24px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    background: #d5dce8;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 18px;
+}
+
+.dot {
+    position: absolute;
+    left: -23px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    background: #0d6efd;
+    border-radius: 50%;
+}
+
+.content {
+    padding-bottom: 8px;
+}
+
+.content p {
+    margin: 4px 0;
+    color: #555;
+}
+
+.content span {
+    color: #777;
+    font-size: 13px;
+}
+
+.empty {
+    color: #777;
+}

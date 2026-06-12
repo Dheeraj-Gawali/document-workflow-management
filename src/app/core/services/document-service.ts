@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { delay, Observable, of, throwError } from 'rxjs';
 import { DocumentItem, DocumentStatus } from '../models/document.model';
-import { MOCK_DOCUMENTS } from '../mock/mock';
+import { MOCK_DOCUMENTS } from '../mock/mock-document';
 
 @Injectable({
 	providedIn: 'root'

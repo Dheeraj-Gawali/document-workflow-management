@@ -1,1 +1,17 @@
-<p>audit-timeline-component works!</p>
+<div class="timeline" *ngIf="logs.length; else noLogs">
+    <div class="timeline-item" *ngFor="let log of logs">
+        <div class="dot"></div>
+
+        <div class="content">
+            <strong>{{ log.action }}</strong>
+            <p>{{ log.user }}</p>
+            <span>{{ log.date }}</span>
+
+            <p *ngIf="log.comment">{{ log.comment }}</p>
+        </div>
+    </div>
+</div>
+
+<ng-template #noLogs>
+    <p class="empty">No audit history available.</p>
+</ng-template>

@@ -1,1 +1,117 @@
-<p>document-details-component works!</p>
+<div class="page-header">
+    <div>
+        <h2>Document Details</h2>
+        <p *ngIf="document">{{ document.documentNumber }}</p>
+    </div>
+
+    <a routerLink="/documents">Back</a>
+</div>
+
+<p *ngIf="loading">Loading document details...</p>
+<p class="message" *ngIf="message">{{ message }}</p>
+
+<div *ngIf="document && !loading">
+    <div class="actions">
+        <a *ngIf="document.status === 'Draft'" [routerLink]="['/documents', document.id, 'edit']">
+            Edit
+        </a>
+
+        <button type="button" *ngIf="document.status === 'Draft'" (click)="submitForReview()">
+            Submit
+        </button>
+
+        <button type="button" *ngIf="document.status === 'Submitted'" (click)="moveToManagerReview()">
+            Manager Review
+        </button>
+
+        <button type="button" *ngIf="document.status === 'Manager Review'" (click)="approveDocument()">
+            Approve
+        </button>
+
+        <button type="button" class="danger" *ngIf="document.status === 'Manager Review'" (click)="rejectDocument()">
+            Reject
+        </button>
+    </div>
+
+    <section class="details-grid">
+        <div>
+            <label>Title</label>
+            <p>{{ document.title }}</p>
+        </div>
+
+        <div>
+            <label>Department</label>
+            <p>{{ document.department }}</p>
+        </div>
+
+        <div>
+            <label>Status</label>
+            <p>
+                <span class="status">{{ document.status }}</span>
+            </p>
+        </div>
+
+        <div>
+            <label>Priority</label>
+            <p>{{ document.priority }}</p>
+        </div>
+
+        <div>
+            <label>Created By</label>
+            <p>{{ document.createdBy }}</p>
+        </div>
+
+        <div>
+            <label>Created Date</label>
+            <p>{{ document.createdDate }}</p>
+        </div>
+
+        <div>
+            <label>Last Updated Date</label>
+            <p>{{ document.updatedDate }}</p>
+        </div>
+
+        <div>
+            <label>Effective Date</label>
+            <p>{{ document.effectiveDate }}</p>
+        </div>
+    </section>
+
+    <section>
+        <h3>Description</h3>
+        <p>{{ document.description }}</p>
+    </section>
+
+    <section>
+        <h3>Attachments</h3>
+
+        <table *ngIf="document.attachments.length; else noFiles">
+            <thead>
+                <tr>
+                    <th>File Name</th>
+                    <th>Size</th>
+                    <th>Type</th>
+                    <th>Uploaded At</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let file of document.attachments">
+                    <td>{{ file.fileName }}</td>
+                    <td>{{ file.size / 1024 | number: '1.0-0' }} KB</td>
+                    <td>{{ file.type }}</td>
+                    <td>{{ file.uploadedAt }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ng-template #noFiles>
+            <p>No attachments available.</p>
+        </ng-template>
+    </section>
+
+    <section>
+        <h3>Audit Timeline</h3>
+        <app-audit-timeline-component [logs]="document.auditLogs"></app-audit-timeline-component>
+    </section>
+</div>
