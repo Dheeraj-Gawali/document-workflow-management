@@ -1,0 +1,96 @@
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.page-header h2 {
+    margin: 0;
+}
+
+.page-header p {
+    margin: 6px 0 0;
+    color: #666;
+}
+
+.toolbar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+input,
+select,
+button,
+.primary-btn {
+    padding: 9px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button,
+.primary-btn {
+    background: #0d6efd;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+button:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #f5f5f5;
+}
+
+.sortable {
+    cursor: pointer;
+}
+
+.status {
+    padding: 4px 8px;
+    background: #eef3ff;
+    border-radius: 4px;
+}
+
+td a {
+    margin-right: 10px;
+    color: #0d6efd;
+}
+
+.message {
+    color: #155724;
+    background: #d4edda;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.empty {
+    text-align: center;
+    color: #777;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    align-items: center;
+    margin-top: 18px;
+}

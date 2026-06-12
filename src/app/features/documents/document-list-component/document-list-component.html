@@ -1,0 +1,87 @@
+<div class="page-header">
+    <div>
+        <h2>Documents</h2>
+        <p>Total Records: {{ totalRecords }}</p>
+    </div>
+
+    <a routerLink="/documents/create" class="primary-btn">Create Document</a>
+</div>
+
+<div class="toolbar">
+    <input type="text" placeholder="Search by title" [(ngModel)]="searchText" (input)="applyFilters()" />
+
+    <select [(ngModel)]="selectedStatus" (change)="applyFilters()">
+        <option value="">All Status</option>
+        <option *ngFor="let status of statuses" [value]="status">
+            {{ status }}
+        </option>
+    </select>
+
+    <button type="button" (click)="bulkApprove()">Bulk Approve</button>
+    <button type="button" (click)="bulkReject()">Bulk Reject</button>
+</div>
+
+<p class="message" *ngIf="message">{{ message }}</p>
+<p *ngIf="loading">Loading documents...</p>
+
+<table *ngIf="!loading">
+    <thead>
+        <tr>
+            <th>
+                <input type="checkbox" [checked]="isAllSelected()" (change)="toggleSelectAll($event)" />
+            </th>
+            <th>Document Number</th>
+            <th (click)="changeSort('title')" class="sortable">
+                Title
+            </th>
+            <th>Department</th>
+            <th>Status</th>
+            <th>Created By</th>
+            <th (click)="changeSort('createdDate')" class="sortable">
+                Created Date
+            </th>
+            <th>Last Updated Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let document of pagedDocuments">
+            <td>
+                <input type="checkbox" [checked]="isSelected(document.id)" (change)="toggleSelection(document.id)" />
+            </td>
+            <td>{{ document.documentNumber }}</td>
+            <td>{{ document.title }}</td>
+            <td>{{ document.department }}</td>
+            <td>
+                <span class="status">{{ document.status }}</span>
+            </td>
+            <td>{{ document.createdBy }}</td>
+            <td>{{ document.createdDate }}</td>
+            <td>{{ document.updatedDate }}</td>
+            <td>
+                <a [routerLink]="['/documents', document.id]">View</a>
+
+                <a *ngIf="document.status === 'Draft'" [routerLink]="['/documents', document.id, 'edit']">
+                    Edit
+                </a>
+            </td>
+        </tr>
+
+        <tr *ngIf="pagedDocuments.length === 0">
+            <td colspan="9" class="empty">No documents found.</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="pagination" *ngIf="totalRecords > pageSize">
+    <button type="button" [disabled]="currentPage === 1" (click)="previousPage()">
+        Previous
+    </button>
+
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+
+    <button type="button" [disabled]="currentPage === totalPages" (click)="nextPage()">
+        Next
+    </button>
+</div>

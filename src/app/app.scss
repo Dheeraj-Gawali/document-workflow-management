@@ -1,0 +1,47 @@
+.app-header {
+    padding: 20px 32px;
+    background: #1f2937;
+    color: #fff;
+    text-align: center;
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.app-nav {
+    display: flex;
+    gap: 8px;
+    padding: 12px 32px;
+    background: #f3f4f6;
+    border-bottom: 1px solid #ddd;
+    flex-wrap: wrap;
+}
+
+.app-nav a {
+    padding: 9px 12px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.app-nav a.active,
+.app-nav a:hover {
+    background: #0d6efd;
+    color: #fff;
+}
+
+.app-main {
+    padding: 28px 32px;
+}
+
+@media (max-width: 600px) {
+
+    .app-header,
+    .app-nav,
+    .app-main {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
