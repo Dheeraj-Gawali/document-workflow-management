@@ -1,1 +1,31 @@
-<p>approval-tree-component works!</p>
+<div class="tree-node">
+    <div class="node-card">
+        <button type="button" class="toggle" *ngIf="node.children.length" (click)="toggleExpand()">
+            {{ node.expanded ? '-' : '+' }}
+        </button>
+
+        <span class="toggle-placeholder" *ngIf="!node.children.length"></span>
+
+        <div class="node-info" *ngIf="!editing">
+            <strong>{{ node.name }}</strong>
+            <span>{{ node.role }}</span>
+        </div>
+
+        <div class="edit-form" *ngIf="editing">
+            <input type="text" [(ngModel)]="node.name" />
+            <input type="text" [(ngModel)]="node.role" />
+        </div>
+
+        <div class="node-actions">
+            <button type="button" *ngIf="!editing" (click)="editing = true">Edit</button>
+            <button type="button" *ngIf="editing" (click)="saveEdit()">Save</button>
+            <button type="button" (click)="addChild()">Add Child</button>
+            <button type="button" class="danger" (click)="removeNode()">Remove</button>
+        </div>
+    </div>
+
+    <div class="children" *ngIf="node.expanded">
+        <app-approval-tree-component *ngFor="let child of node.children" [node]="child" (changed)="changed.emit()"
+            (remove)="removeChild($event)"></app-approval-tree-component>
+    </div>
+</div>

@@ -1,1 +1,18 @@
-<p>approval-matrix-component works!</p>
+<div class="page-header">
+    <div>
+        <h2>Approval Matrix</h2>
+        <p>Manage approval hierarchy</p>
+    </div>
+
+    <div class="header-actions">
+        <a routerLink="/documents">Documents</a>
+        <button type="button" (click)="saveMatrix()">Save Matrix</button>
+    </div>
+</div>
+
+<p *ngIf="loading">Loading approval matrix...</p>
+<p class="message" *ngIf="message">{{ message }}</p>
+
+<div class="matrix-wrapper" *ngIf="matrix && !loading">
+    <app-approval-tree-component [node]="matrix" (changed)="markAsChanged()" (remove)="removeRootNode()"></app-approval-tree-component>
+</div>

@@ -1,0 +1,52 @@
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.page-header h2 {
+    margin: 0;
+}
+
+.page-header p {
+    margin: 6px 0 0;
+    color: #666;
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.header-actions a,
+.header-actions button {
+    padding: 9px 12px;
+    border: 0;
+    border-radius: 4px;
+    background: #0d6efd;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.matrix-wrapper {
+    overflow-x: auto;
+    padding-bottom: 20px;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 4px;
+    background: #fff3cd;
+    color: #664d03;
+}
+
+@media (max-width: 700px) {
+    .page-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+}
