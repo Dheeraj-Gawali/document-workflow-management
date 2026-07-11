@@ -6,27 +6,22 @@
 
 ![Home Page](public/screenshots/DocumentHomPage.png)
 
-This is Home page where all the documents are listed.
-
 ### Document Detail Page
 
 ![Detail Page](public/screenshots/DocumentDetail.png)
 
 ### Approval Matrix Page
 
-![Approval Matrix](public/screenshots/login.png)
-
-### Document Approval Matrix Page
-
 ![Approval Matrix](public/screenshots/DocumentApprovalMatrix.png)
 
+### Document Dynamic Form
 
-```bash
-This project is managing documents through an approval workflow.
-```
+![Dynamic Form](public/screenshots/DocumentDynamicForm.png)
+
 
 # Demo Link
-Live url for Demo [Live Url](https://dheeraj-gawali.github.io/document-workflow-management/)
+This project is managing documents through an approval workflow.
+Live url for Demo [Demo Live Url](https://dheeraj-gawali.github.io/document-workflow-management/)
 
 ## Features Implemented
 
