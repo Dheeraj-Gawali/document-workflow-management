@@ -4,21 +4,21 @@
 
 ### Home Page
 
-![Home Page](assets/screenshots/DocumentHomPage.png)
+![Home Page](public/screenshots/DocumentHomPage.png)
 
 This is Home page where all the documents are listed.
 
 ### Document Detail Page
 
-![Detail Page](assets/screenshots/DocumentDetail.png)
+![Detail Page](public/screenshots/DocumentDetail.png)
 
 ### Approval Matrix Page
 
-![Approval Matrix](assets/screenshots/login.png)
+![Approval Matrix](public/screenshots/login.png)
 
 ### Document Approval Matrix Page
 
-![Approval Matrix](assets/screenshots/DocumentApprovalMatrix.png)
+![Approval Matrix](public/screenshots/DocumentApprovalMatrix.png)
 
 
 ```bash
