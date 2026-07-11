@@ -1,4 +1,70 @@
-# DocumentWorkflowManagement
+# Document Workflow Management System
+
+## Screenshots
+
+### Home Page
+
+![Home Page](assets/screenshots/DocumentHomPage.png)
+
+This is Home page where all the documents are listed.
+
+### Document Detail Page
+
+![Detail Page](assets/screenshots/DocumentDetail.png)
+
+### Approval Matrix Page
+
+![Approval Matrix](assets/screenshots/login.png)
+
+### Document Approval Matrix Page
+
+![Approval Matrix](assets/screenshots/DocumentApprovalMatrix.png)
+
+
+```bash
+This project is managing documents through an approval workflow.
+```
+
+# Demo Link
+Live url for Demo [Live Url](https://dheeraj-gawali.github.io/document-workflow-management/)
+
+## Features Implemented
+
+- Document listing with search, status filter, sorting, pagination and total count
+- Create document using Reactive Forms
+- Edit only draft documents
+- File upload with progress, cancel, retry and remove
+- Document details page
+- Workflow status actions
+- Audit timeline
+- Bulk approve and reject
+- Dynamic form rendering from configuration
+- Recursive approval matrix management
+- Custom click outside directive
+- Custom permission directive
+- Dirty state route guard
+- Mock API using Angular services and localStorage
+- Lazy loaded standalone components
+
+## Workflow
+
+Draft -> Submitted -> Manager Review -> Approved / Rejected
+
+<!-- questions and answers -->
+# Assumptions
+i. Backend API is mocked using Angular services and localStorage.
+ii. Logged in user is considered as Current User.
+iii. File upload is simulated because no real backend is available.
+iv. Approval matrix is stored locally.
+v. Only Draft documents can be edited.
+vi. Approved and Rejected documents are treated as final states.
+
+# Architecture Decisions
+The application uses standalone components and lazy loading to keep the structure simple and scalable.
+The core folder contains shared application-level logic like services, guards, interceptors, models and mock data.
+The shared folder contains reusable UI components and directives.
+The features folder contains business features like documents and approval matrix.
+Reactive Forms are used for document creation, editing and dynamic form rendering because they provide strong validation and better control for complex forms.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.3.
 
@@ -57,50 +123,6 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-
-
-// document workflow management system
-# Document Workflow Management System
-
-This project is managing documents through an approval workflow.
-
-## Features Implemented
-
-- Document listing with search, status filter, sorting, pagination and total count
-- Create document using Reactive Forms
-- Edit only draft documents
-- File upload with progress, cancel, retry and remove
-- Document details page
-- Workflow status actions
-- Audit timeline
-- Bulk approve and reject
-- Dynamic form rendering from configuration
-- Recursive approval matrix management
-- Custom click outside directive
-- Custom permission directive
-- Dirty state route guard
-- Mock API using Angular services and localStorage
-- Lazy loaded standalone components
-
-## Workflow
-
-Draft -> Submitted -> Manager Review -> Approved / Rejected
-
-<!-- questions and answers -->
-# Assumptions
-i. Backend API is mocked using Angular services and localStorage.
-ii. Logged in user is considered as Current User.
-iii. File upload is simulated because no real backend is available.
-iv. Approval matrix is stored locally.
-v. Only Draft documents can be edited.
-vi. Approved and Rejected documents are treated as final states.
-
-# Architecture Decisions
-The application uses standalone components and lazy loading to keep the structure simple and scalable.
-The core folder contains shared application-level logic like services, guards, interceptors, models and mock data.
-The shared folder contains reusable UI components and directives.
-The features folder contains business features like documents and approval matrix.
-Reactive Forms are used for document creation, editing and dynamic form rendering because they provide strong validation and better control for complex forms.
 
 # Architecture Assessment Answers
 # 1. How would you structure an Angular application containing over 500 components?

@@ -1,1 +1,45 @@
-<p>dynamic-form-component works!</p>
+<div class="page-header">
+    <div>
+        <h2>Dynamic Form</h2>
+        <p>Form controls generated from configuration</p>
+    </div>
+
+    <a routerLink="/documents">Back</a>
+</div>
+<div class="mainCls">
+    <div class="formCls">
+        <form [formGroup]="dynamicForm" (ngSubmit)="submitForm()">
+            <div class="form-field" *ngFor="let field of fields">
+                <label>
+                    {{ field.label }}
+                    <span *ngIf="field.required">*</span>
+                </label>
+
+                <input *ngIf="field.type === 'text'" type="text" [formControlName]="field.key" />
+
+                <input *ngIf="field.type === 'date'" type="date" [formControlName]="field.key" />
+
+                <select *ngIf="field.type === 'select'" [formControlName]="field.key">
+                    <option value="">Select {{ field.label }}</option>
+                    <option *ngFor="let option of field.options" [value]="option">
+                        {{ option }}
+                    </option>
+                </select>
+
+                <textarea *ngIf="field.type === 'textarea'" rows="4" [formControlName]="field.key"></textarea>
+
+                <small *ngIf="getControl(field)?.touched && getControl(field)?.hasError('required')">
+                    {{ field.label }} is required.
+                </small>
+            </div>
+
+            <button type="submit">Submit Dynamic Form</button>
+        </form>
+    </div>
+    <div class="subDataCls">
+        <div class="result" *ngIf="submittedValue">
+            <h3>Submitted Value</h3>
+            <pre>{{ submittedValue }}</pre>
+        </div>
+    </div>
+</div>
