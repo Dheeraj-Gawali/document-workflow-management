@@ -1,5 +1,13 @@
 # Document Workflow Management System
 
+## Overview
+
+Document Workflow Management System is an enterprise-style Angular application designed to manage document creation, approval workflows, and status tracking.
+
+The application demonstrates scalable Angular architecture using standalone components, lazy loading, reactive forms, reusable components, custom directives, route guards, and service-based state management.
+
+The goal of this project was to simulate a real-world business workflow system similar to applications used in enterprise environments.
+
 ## Screenshots
 
 ### Home Page
@@ -45,6 +53,32 @@ Live url for Demo [Demo Live Url](https://dheeraj-gawali.github.io/document-work
 
 Draft -> Submitted -> Manager Review -> Approved / Rejected
 
+# Tech Stack
+
+| Technology | Usage |
+|---|---|
+| Angular 20 | Frontend framework |
+| TypeScript | Application development |
+| RxJS | Reactive programming |
+| SCSS | Styling |
+| Bootstrap | Responsive UI |
+| Angular Router | Navigation and lazy loading |
+| Reactive Forms | Complex form handling |
+| LocalStorage | Mock persistence |
+
+# Angular Concepts Demonstrated
+
+- Standalone Component Architecture
+- Feature-based folder structure
+- Lazy loaded routes
+- Reactive Forms
+- Dynamic form generation
+- Custom directives
+- Route guards
+- Reusable UI components
+- Service-based business logic
+- Type-safe models
+
 <!-- questions and answers -->
 # Assumptions
 i. Backend API is mocked using Angular services and localStorage.
@@ -55,6 +89,38 @@ v. Only Draft documents can be edited.
 vi. Approved and Rejected documents are treated as final states.
 
 # Architecture Decisions
+
+
+src/app
+|
+├── core
+│   ├── services
+│   ├── guards
+│   ├── interceptors
+│   └── models
+|   └── mock
+│
+│
+├── shared
+│   └── components
+|           ├──audit-timeline
+|           ├──file-upload
+│   └── directives
+|           ├──click-outside
+|           ├──permission
+│   └── pipes
+│
+└── features
+    └── documents
+            ├──document-detail
+            ├──document-form
+            ├──document-list
+            ├──document-form
+    └── approval-matrix
+            ├──approval-matrix
+            ├──approval-tree
+
+    
 The application uses standalone components and lazy loading to keep the structure simple and scalable.
 The core folder contains shared application-level logic like services, guards, interceptors, models and mock data.
 The shared folder contains reusable UI components and directives.
