@@ -88,44 +88,40 @@ iv. Approval matrix is stored locally.
 v. Only Draft documents can be edited.
 vi. Approved and Rejected documents are treated as final states.
 
-# Architecture Decisions
 
+## 📂 Project Structure
+
+```text
 src
-│
 ├── app
-|   ├── core
-│   |    ├── services
-│   |    ├── guards
-│   |    ├── interceptors
-│   |    ├── models
-|   |    └── mock
-|   |
+│   ├── core
+│   │   ├── services
+│   │   ├── guards
+│   │   ├── interceptors
+│   │   ├── models
+│   │   └── mock
 │   ├── features
-│   │       └── documents
-│   │       |        ├──document-detail
-│   │       |        ├──document-form
-│   │       |        ├──document-list
-│   │       |        └──document-form
-│   │       |
-|   |       └── approval-matrix
-│   │                ├──approval-matrix
-│   │                ├──approval-tree
-│   │
-│   │       
-│   │
-|   └── shared
-│           └── components
-|           |       ├──audit-timeline
-|           |       ├──file-upload
-│           └── directives
-|                   ├──click-outside
-|                   ├──permission│
+│   │   ├── documents
+│   │   │   ├── document-detail
+│   │   │   ├── document-form
+│   │   │   ├── document-list
+│   │   │   └── document-form
+│   │   └── approval-matrix
+│   │       ├── approval-matrix
+│   │       └── approval-tree
+│   └── shared
+│       ├── components
+│       │   ├── audit-timeline
+│       │   └── file-upload
+│       └── directives
+│           ├── click-outside
+│           └── permission
 ├── assets
 └── styles.scss
+```
 
     
-
-    
+# Architecture Decisions    
 The application uses standalone components and lazy loading to keep the structure simple and scalable.
 The core folder contains shared application-level logic like services, guards, interceptors, models and mock data.
 The shared folder contains reusable UI components and directives.
